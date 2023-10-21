@@ -1,0 +1,1 @@
+self.__NEXT_FONT_MANIFEST="{\"pages\":{},\"app\":{\"/Users/won-uyeon/Desktop/github/hago-mandal/src/app/layout\":[\"static/media/dc7d81b50f194d63-s.p.woff2\"]},\"appUsingSizeAdjust\":true,\"pagesUsingSizeAdjust\":false}"
