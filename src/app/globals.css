@@ -1,11 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 
 @font-face {
   font-family: 'SUITE-Regular';
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
+}
+
+:root {
+  --bg-obsidian: #0b0c0e;
+  --ink-paper: #f4f1ea;
+  --accent-volt: #f4b942;
+}
+
+body {
+  background-color: var(--bg-obsidian);
+  color: var(--ink-paper);
+}
+
+.font-display {
+  font-family: 'Anton', 'SUITE-Regular', sans-serif;
+}
+
+.font-mono-tech {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+}
+
+.text-stroke-editorial {
+  -webkit-text-stroke: 1.5px rgba(243, 242, 238, 0.35);
+  color: transparent;
+}
+
+.film-grain-overlay {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 0);
+  background-size: 3px 3px;
+}
+
+/* Modern Web Guidance: scroll-progress-indicator & scrollytelling */
+@media (prefers-reduced-motion: no-preference) {
+  @supports ((animation-timeline: scroll())) {
+    @keyframes grow-hago-progress {
+      from {
+        transform: scaleX(0);
+      }
+      to {
+        transform: scaleX(1);
+      }
+    }
+
+    #hago-scroll-progress {
+      transform-origin: 0 50%;
+      animation: grow-hago-progress auto linear;
+      animation-timeline: scroll();
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #hago-scroll-progress {
+    animation: none !important;
+  }
 }

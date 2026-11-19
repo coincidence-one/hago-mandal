@@ -1,45 +1,39 @@
-import './globals.css'
-import type { Metadata } from 'next'
+import './globals.css';
+import type { Metadata } from 'next';
 import localFont from 'next/font/local';
-import Link from 'next/link';
+import React from 'react';
+import { ScrollProgressBar } from '@/components/common/ScrollProgressBar';
+import { SmoothScrollProvider } from '@/components/common/SmoothScrollProvider';
+import { Footer } from '@/components/layout/Footer';
+import { Navbar } from '@/components/layout/Navbar';
 
-const mainFont = localFont({ src: '../../public/fonts/SUITE-Medium.woff2' })
+const mainFont = localFont({ src: '../../public/fonts/SUITE-Medium.woff2' });
 
 export const metadata: Metadata = {
-  title: '하고만달',
-  description: 'website for make mandalart',
+  title: '하고만달 (HAGO-MANDAL) | 오타니 쇼헤이 투타 모션 & 9×9 만다라트 계획표',
+  description:
+    '오타니의 투구에서 타격으로 이어지는 스크롤 애니메이션과 함께 만다라트(Mandal-Art) 81칸 계획표를 설계하고 실천하는 웹 서비스',
+};
+
+export interface RootLayoutProps {
+  children: React.ReactNode;
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+const RootLayout = ({ children }: RootLayoutProps) => {
   return (
-    <html lang="en">
-      <body className={mainFont.className} >
-        <div className='bg-slate-950'>
-          <nav className='flex items-center justify-between px-20 py-5'>
-            <section className='flex items-center gap-5'>
-              <Link href="/profiles">
-                <p className='text-[#f8f8f8] font-bold text-xl'>프로필</p>
-              </Link>
-              <Link href="/profiles">
-                <p className='text-[#f8f8f8] font-bold text-xl'>템플릿</p>
-              </Link>
-            </section>
-            <section className='flex items-center gap-5'>
-              <Link href="/profiles">
-                <button className=' text-[#f8f8f8] font-bold text-xl rounded border-2 p-2'>회원가입</button>
-              </Link>
-              <Link href="/profiles">
-                <button className='text-[#010409] bg-white font-bold text-xl rounded border-2 p-2'>로그인</button>
-              </Link>
-            </section>
-          </nav>
+    <html lang="ko">
+      <body
+        className={`${mainFont.className} min-h-screen bg-slate-950 text-slate-100 antialiased selection:bg-sky-500 selection:text-slate-950`}
+      >
+        <SmoothScrollProvider>
+          <ScrollProgressBar />
+          <Navbar />
           {children}
-        </div>
+          <Footer />
+        </SmoothScrollProvider>
       </body>
-    </html >
-  )
-}
+    </html>
+  );
+};
+
+export default RootLayout;
